@@ -6,6 +6,13 @@ import java.util.UUID;
 public class Product {
     private final String id;
     private final String name;
+
+    public Product(String id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     private final String description;
     private BigDecimal price;
 

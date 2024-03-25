@@ -1,4 +1,4 @@
-package pl.Lukaszmaguda.ecommerce.catalog;
+package pl.Lukaszmaguda.ecommerce;
 
 import pl.Lukaszmaguda.ecommerce.catalog.Product;
 

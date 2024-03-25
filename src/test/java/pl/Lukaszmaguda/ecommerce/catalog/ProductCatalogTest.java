@@ -1,6 +1,7 @@
 package pl.Lukaszmaguda.ecommerce.catalog;
 
 import org.junit.jupiter.api.Test;
+import pl.Lukaszmaguda.ecommerce.ProductCatalog;
 
 import java.math.BigDecimal;
 import java.util.List;

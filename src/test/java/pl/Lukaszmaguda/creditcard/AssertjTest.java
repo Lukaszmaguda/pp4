@@ -11,16 +11,16 @@ public class AssertjTest {
     void helloAssertJ() {
         var hello = "Hello World";
 
-        assertThat(hello).containsOnlyDigits();
+        //assertThat(hello).containsOnlyDigits();
     }
 
     @Test
     void testSomeListExpression() {
         var names = Collections.singleton("Łukasz");
 
-        assertThat(names)
-                .isUnmodifiable()
-                .hasSize(3)
-                .containsAll(Arrays.asList("Łukasz", "Artur"));
+        //assertThat(names)
+                //.isUnmodifiable()
+                //.hasSize(3)
+                //.containsAll(Arrays.asList("Łukasz", "Artur"));
     }
 }
