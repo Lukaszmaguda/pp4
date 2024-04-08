@@ -1,16 +1,16 @@
 package pl.Lukaszmaguda.ecommerce.catalog;
 
 import org.junit.jupiter.api.Test;
-import pl.Lukaszmaguda.ecommerce.ProductCatalog;
 
 import java.math.BigDecimal;
 import java.util.List;
+import static org.assertj.core.api.Assertions.*;
 
 public class ProductCatalogTest {
 
     @Test
     void itListAvailableProducts() {
-        ProductCatalog catalog = thereIsProductCatalog();
+        ProductStorage.ProductCatalog catalog = thereIsProductCatalog();
 
         List<Product> products = catalog.allProducts();
 
@@ -21,7 +21,7 @@ public class ProductCatalogTest {
 
     @Test
     void itAllowsToAddProduct() {
-        ProductCatalog catalog = thereIsProductCatalog();
+        ProductStorage.ProductCatalog catalog = thereIsProductCatalog();
 
         catalog.addProduct("Lego set 8083", "Nice one");
         List<Product> products = catalog.allProducts();
@@ -32,7 +32,7 @@ public class ProductCatalogTest {
 
     @Test
     void itLoadsSingleProductById() {
-        ProductCatalog catalog = thereIsProductCatalog();
+        ProductStorage.ProductCatalog catalog = thereIsProductCatalog();
         String id = catalog.addProduct("Lego set 8083", "Nice one");
 
         Product loaded = catalog.getProductBy(id);
@@ -42,7 +42,7 @@ public class ProductCatalogTest {
 
     @Test
     void itAllowsChangePrice() {
-        ProductCatalog catalog = thereIsProductCatalog();
+        ProductStorage.ProductCatalog catalog = thereIsProductCatalog();
         String id = catalog.addProduct("Lego set 8083", "Nice one");
 
         catalog.changePrice(id, BigDecimal.valueOf(10.10));
@@ -51,7 +51,7 @@ public class ProductCatalogTest {
         assertThat(BigDecimal.valueOf(10.10)).isEqualTo(loaded.getPrice());
     }
 
-    private static ProductCatalog thereIsProductCatalog() {
-        return new ProductCatalog();
+    private static ProductStorage.ProductCatalog thereIsProductCatalog() {
+        return new ProductStorage.ProductCatalog();
     }
 }
