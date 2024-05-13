@@ -1,21 +1,25 @@
 package pl.Lukaszmaguda.ecommerce.sales;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 public class SalesController {
-    salesFacade salesFacade;
+    SalesFacade sales;
 
+    public SalesController(SalesFacade sales) {
 
-    public salesController(SalesFacade salesFacade){
-        this.salesFacade=salesFacade;
+        this.sales = sales;
     }
 
     @GetMapping("/api/current-offer")
     Offer getCurrentOffer(){
-        String customerId= getCurrentCustomerId();
-        return salesFacade.getCurrentOffer(customerId);
-
+        String customerId = getCurrentCustomerId();
+        return sales.getCurrentOffer(customerId);
     }
 
-    private String getCurrentCustomerId() {
+    private String getCurrentCustomerId(){
+
         return "Łukasz";
     }
 }

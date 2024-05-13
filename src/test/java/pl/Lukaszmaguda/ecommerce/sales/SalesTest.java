@@ -10,27 +10,27 @@ public class SalesTest {
     @Test
     void itAddProductToCart(){
         SalesFacade sales = thereIsSalesFacade();
-    }
 
-    private SalesFacade thereIsSalesFacade() {
-        return new SalesFacade();
     }
 
     @Test
     void itShowsCurrentOffer(){
         SalesFacade sales = thereIsSalesFacade();
-        var customerId = thereIsCustomer("Lukasz");
+        var customerId = thereIsCustomer("Łukasz");
 
         Offer offer = sales.getCurrentOffer(customerId);
-        assertEquals(0, offer.getItemsCount());
+
+        assertEquals(0,offer.getItemsCount());
         assertEquals(BigDecimal.ZERO, offer.getTotal());
-
     }
 
-    private Object thereIsCustomer() {
-        return UUID.randomUUID().toString();
+    private String thereIsCustomer(String id) {
+        return id;
     }
 
+    private SalesFacade thereIsSalesFacade() {
+        return new SalesFacade();
+    }
     @Test
     void itRemoveProductFromCart(){
 
@@ -40,5 +40,7 @@ public class SalesTest {
 
     }
     @Test
-    void itAllowToAccept
+    void itAllowToPayForReservation(){
+
+    }
 }
