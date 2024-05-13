@@ -9,6 +9,10 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import pl.Lukaszmaguda.ecommerce.catalog.ProductCatalog;
+
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.FactoryBasedNavigableIterableAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +26,8 @@ public class SalesHttpTest {
     TestRestTemplate http;
     @LocalServerPort
     private int port;
+    @Autowired
+    ProductCatalog catalog;
 
 
     @Test
@@ -53,10 +59,12 @@ public class SalesHttpTest {
         assertEquals(reservationDetailResponseEntity.getStatusCode(), HttpStatus.OK);
         assertNotNull(reservationDetailResponseEntity.getBody().getReservationId());
         assertNotNull(reservationDetailResponseEntity.getBody().getPaymentUrl());
-
+        assertEquals(BigDecimal.valueOf(10.10);
     }
-    private String thereIsExampleProduct(){
-        return "productX";
+    private String thereIsExampleProduct(String name, BigDecimal price){
+        var id=catalog.addProduct(name,name){
+
+        }
     }
 
 
