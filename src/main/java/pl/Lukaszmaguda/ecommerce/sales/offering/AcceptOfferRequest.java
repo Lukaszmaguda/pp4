@@ -1,4 +1,4 @@
-package pl.Lukaszmaguda.ecommerce.sales;
+package pl.Lukaszmaguda.ecommerce.sales.offering;
 
 public class AcceptOfferRequest {
     String firstName;

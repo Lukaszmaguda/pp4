@@ -3,6 +3,11 @@ getProducts= () => {
         .then(response => response.json());
 }
 
+getCurrentOffer = () => {
+    return fetch("/api/current-offer")
+        .then(response => response.json());
+}
+
 createProductHtmlEl = (productData) =>{
     const template =`
         <div>
@@ -13,7 +18,6 @@ createProductHtmlEl = (productData) =>{
         <button data-id="${productData.id"}> Add to cart </button>}
         </div>
         `;
-
     const newEl = document.createElement("li");
     newEl.innerHTML = template.trim();
     return newEl;
@@ -26,6 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(products => products.map(createProductHtmlEl))
         .then(productsHtmls => {
             productsHtmls.forEach(htmlEl => productList.appendChild(htmlEl))
-
             })
 });

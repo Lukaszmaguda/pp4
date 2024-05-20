@@ -1,70 +1,96 @@
 package pl.Lukaszmaguda.ecommerce.sales;
 
 import org.junit.jupiter.api.Test;
+import pl.Lukaszmaguda.ecommerce.sales.offering.Offer;
+
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.math.BigDecimal;
-
-
-
-@Test
-void itAllowsToAddMultipleProductsToCart(){
-    var  sales = thereIsSalesFacade();
-    var customerId = thereIsCustomer("Łukasz");
-
-    Offer offer = sales.getCurrentOffer(customerId);
-
-    assertEquals(0,offer.getItemsCount());
-    assertEquals(BigDecimal.ZERO, offer.getTotal());
-}
 
 public class SalesTest {
     @Test
-    void itAddProductToCart(){
-        SalesFacade sales = thereIsSalesFacade();
-        var productId = thereIsProduct("product a", BigDecimal.valueOf(10));
-        SalesFacade sales= thereIsSalesFacade();
+    void itShowsOffer(){
+        SalesFacade sales = thereIsSAlesFacade();
+        String customerId = thereIsExampleCustomer("Emil");
 
-        sales.addToCart(customerId,productId);
+        Offer offer = sales.getCurrentOffer(customerId);
 
-        Offer currentOffer=sales.getCurrentOffer(customerId);
-        assertEquals(BigDecimal.valueOf(10), currentOffer.getTotal());
-        assertEquals(1,currentOffer.getItemsCount());
+        assertEquals(0, offer.getItemsCount());
+        assertEquals(BigDecimal.ZERO, offer.getTotal());
+    }
+
+    private String thereIsExampleCustomer(String id) {
+        return id;
+    }
+
+    private SalesFacade thereIsSAlesFacade() {
+        return new SalesFacade();
+    }
+
+    @Test
+    void itAllowsToAddProductToCart(){
+        var customerId = thereIsExampleCustomer("Emil");
+        var productId = thereIsProduct("product", BigDecimal.valueOf(10));
+
+        SalesFacade sales = thereIsSAlesFacade();
+
+        sales.addToCart(customerId, productId);
+
+        Offer offer = sales.getCurrentOffer(customerId);
+        assertEquals(BigDecimal.valueOf(10), offer.getTotal());
+        assertEquals(1, offer.getItemsCount());
 
     }
+
+    @Test
+    void itAllowsToAddMultipleProductsToCart(){
+        var customerId = thereIsExampleCustomer("Emil");
+        var productA = thereIsProduct("product a", BigDecimal.valueOf(10));
+        var productB = thereIsProduct("product b", BigDecimal.valueOf(20));
+
+        SalesFacade sales = thereIsSAlesFacade();
+
+        sales.addToCart(customerId, productA);
+        sales.addToCart(customerId, productB);
+
+        Offer offer = sales.getCurrentOffer(customerId);
+        assertEquals(BigDecimal.valueOf(30), offer.getTotal());
+        assertEquals(2, offer.getItemsCount());
+
+    }
+
+    @Test
+    void itDoesNotShareCustomersCarts(){
+        var customerA = thereIsExampleCustomer("Emil");
+        var customerB = thereIsExampleCustomer("XYZ");
+        var productA = thereIsProduct("product a", BigDecimal.valueOf(10));
+        var productB = thereIsProduct("product b", BigDecimal.valueOf(20));
+
+        SalesFacade sales = thereIsSAlesFacade();
+
+        sales.addToCart(customerA, productA);
+        sales.addToCart(customerB, productB);
+
+        Offer offerA = sales.getCurrentOffer(customerA);
+        assertEquals(BigDecimal.valueOf(10), offerA.getTotal());
+
+        Offer offerB = sales.getCurrentOffer(customerB);
+        assertEquals(BigDecimal.valueOf(20), offerB.getTotal());
+
+    }
+
+
 
     private String thereIsProduct(String name, BigDecimal price) {
         return name;
     }
 
     @Test
-    void itShowsCurrentOffer(){
-        SalesFacade sales = thereIsSalesFacade();
-        var customerId = thereIsCustomer("Łukasz");
+    void itAllowsToRemoveProductFromCart(){
 
-        Offer offer = sales.getCurrentOffer(customerId);
-
-        assertEquals(0,offer.getItemsCount());
-        assertEquals(BigDecimal.ZERO, offer.getTotal());
     }
 
-    private String thereIsCustomer(String id) {
-        return id;
-    }
-
-    private SalesFacade thereIsSalesFacade() {
-        return new SalesFacade();
-    }
     @Test
-    void itRemoveProductFromCart(){
-
+    void itAllowsToAcceptOffer(){
     }
-    @Test
-    void itAllowToAcceptOffer(){
 
-    }
-    @Test
-    void itAllowToPayForReservation(){
-
-    }
 }
