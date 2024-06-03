@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import pl.Lukaszmaguda.ecommerce.catalog.ProductCatalog;
 import pl.Lukaszmaguda.ecommerce.sales.offering.AcceptOfferRequest;
-import pl.Lukaszmaguda.ecommerce.sales.reseration.ReservationDetail;
+import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationDetail;
 
 import java.math.BigDecimal;
 

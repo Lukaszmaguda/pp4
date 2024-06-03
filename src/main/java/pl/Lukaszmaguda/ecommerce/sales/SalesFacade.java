@@ -3,7 +3,7 @@ package pl.Lukaszmaguda.ecommerce.sales;
 import pl.Lukaszmaguda.ecommerce.sales.cart.Cart;
 import pl.Lukaszmaguda.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.Lukaszmaguda.ecommerce.sales.offering.Offer;
-import pl.Lukaszmaguda.ecommerce.sales.reseration.ReservationDetail;
+import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationDetail;
 
 public class SalesFacade {
     private InMemoryCartStorage cartStorage;

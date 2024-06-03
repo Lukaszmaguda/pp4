@@ -4,17 +4,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.Lukaszmaguda.ecommerce.sales.SalesFacade;
 import pl.Lukaszmaguda.ecommerce.sales.offering.AcceptOfferRequest;
 import pl.Lukaszmaguda.ecommerce.sales.offering.Offer;
-import pl.Lukaszmaguda.ecommerce.sales.reseration.ReservationDetail;
-import pl.Lukaszmaguda.ecommerce.sales.SalesFacade;
+import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationDetail;
 
 @RestController
 public class SalesController {
     SalesFacade sales;
 
     public SalesController(SalesFacade sales) {
-
         this.sales = sales;
     }
 

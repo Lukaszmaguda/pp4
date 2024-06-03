@@ -1,4 +1,4 @@
-package pl.Lukaszmaguda.ecommerce.sales.reseration;
+package pl.Lukaszmaguda.ecommerce.sales.reservation;
 
 import java.math.BigDecimal;
 

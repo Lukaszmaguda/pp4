@@ -6,6 +6,9 @@ import org.springframework.context.annotation.Bean;
 import pl.Lukaszmaguda.ecommerce.catalog.ArrayListProductStorage;
 import pl.Lukaszmaguda.ecommerce.catalog.ProductCatalog;
 import pl.Lukaszmaguda.ecommerce.sales.SalesFacade;
+import pl.Lukaszmaguda.ecommerce.sales.cart.InMemoryCartStorage;
+import pl.Lukaszmaguda.ecommerce.sales.offer.OfferCalculator;
+import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationRepository;
 
 @SpringBootApplication
 public class App {
@@ -24,7 +27,12 @@ public class App {
     }
 
     @Bean
-    SalesFacade createMySalesFacade(){
-        return new SalesFacade();
+    SalesFacade createSales(){
+        return new SalesFacade(
+                new InMemoryCartStorage(),
+                new OfferCalculator(),
+                new PayUPaymentGateway(),
+                new ReservationRepository()
+        );
     }
 }
