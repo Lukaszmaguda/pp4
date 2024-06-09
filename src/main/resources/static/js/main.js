@@ -11,7 +11,7 @@ getCurrentOffer = () => {
 createProductHtmlEl = (productData) =>{
     const template =`
         <div>
-        <img src = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fimgur.com%2Ft%2Fcorgi&psig=AOvVaw2WSpyehouSumrZ-LKxr-f3&ust=1714461408218000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPjjxuvw5oUDFQAAAAAdAAAAABAE" width =200 height =200/>
+        <img src = "https://i.pinimg.com/736x/05/fe/65/05fe657712b74bafc141f60577ac68a2.jpg" width =200 height =200/>
         <h4> ${productData.name}</h4>
         <span>${productData.description}</span>
         <span>${productData.price}</span>

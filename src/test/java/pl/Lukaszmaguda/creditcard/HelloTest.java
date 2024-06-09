@@ -1,9 +1,9 @@
-package pl.Lukaszmaguda.hello;
+package pl.Lukaszmaguda.creditcard;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 

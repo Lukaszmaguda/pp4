@@ -1,42 +1,47 @@
 package pl.Lukaszmaguda.creditcard;
+
 import java.math.BigDecimal;
+
 public class CreditCard {
     private BigDecimal creditLimit;
     private BigDecimal balance;
 
+    private boolean isCreditCardAlreadyAssigned() {
+        return creditLimit != null;
+    }
+
+    private boolean isCreditBelowThreshold(BigDecimal creditLimit) {
+        return creditLimit.compareTo(BigDecimal.valueOf(100)) < 0;
+    }
+
+    private boolean isWithdrawOverLimit(BigDecimal value) {
+        return balance.compareTo(value) < 0;
+    }
+
     public void assignCredit(BigDecimal creditLimit) {
-        if (isCreditAlreadyAssigned()) {
-            throw new CreditAlreadyAssignedException();
+        if(isCreditCardAlreadyAssigned()) {
+            throw new ReasignLimitException();
         }
 
-        if (isCreditBelowThreshold(creditLimit)) {
-            throw new CreditBelowThresholdException();
+        if(isCreditBelowThreshold(creditLimit)) {
+            throw new CreditBelowTresholdException();
         }
 
         this.creditLimit = creditLimit;
         this.balance = creditLimit;
     }
 
-    private boolean isCreditAlreadyAssigned() {
-        return this.creditLimit != null;
-    }
-
-    private boolean isCreditBelowThreshold(BigDecimal creditLimit) {
-        return BigDecimal.valueOf(100).compareTo(creditLimit) > 0;
-    }
-
     public BigDecimal getBalance() {
         return balance;
     }
 
-    public void pay(BigDecimal money) {
-        if (!canAfford(money)) {
-            throw new NotEnoughMoneyException();
+    public void withdraw(BigDecimal value) {
+        if(isWithdrawOverLimit(value)) {
+            throw new WithdrawOverLimitExcepton();
         }
-
-        this.balance = this.balance.subtract(money);
-    }
-    private boolean canAfford(BigDecimal money) {
-        return this.balance.subtract(money).compareTo(BigDecimal.ZERO) > 0;
+        balance = balance.subtract(value);
     }
 }
+
+// limit = balance ?? || balance = balance + limit
+//

@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pl.Lukaszmaguda.ecommerce.catalog.ArrayListProductStorage;
 import pl.Lukaszmaguda.ecommerce.catalog.ProductCatalog;
+import pl.Lukaszmaguda.ecommerce.infrastructure.PayUPaymentGateway;
 import pl.Lukaszmaguda.ecommerce.sales.SalesFacade;
 import pl.Lukaszmaguda.ecommerce.sales.cart.InMemoryCartStorage;
 import pl.Lukaszmaguda.ecommerce.sales.offer.OfferCalculator;
@@ -23,6 +24,7 @@ public class App {
         productCatalog.addProduct("Lego set 1", "nice one");
         productCatalog.addProduct("Lego set 2", "nice one");
         productCatalog.addProduct("Lego set 3", "nice one");
+
         return productCatalog;
     }
 

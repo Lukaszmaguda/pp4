@@ -27,7 +27,4 @@ public class ArrayListProductStorage implements ProductStorage {
         products.add(newProduct);
     }
 
-
-
-
 }

@@ -1,118 +1,128 @@
 package pl.Lukaszmaguda.ecommerce.payu;
 
-import pl.Lukaszmaguda.ecommerce.catalog.Product;
-
 import java.util.List;
 
 public class OrderCreateRequest {
-    Status status;
-    String redirectUri;
-    String oderId;
-    String extOrderId;
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String getRedirectUri() {
-        return redirectUri;
-    }
-
-    public void setRedirectUri(String redirectUri) {
-        this.redirectUri = redirectUri;
-    }
-
-    public String getOderId() {
-        return oderId;
-    }
-
-    public void setOderId(String oderId) {
-        this.oderId = oderId;
-    }
+    String customerIp;
+    String notifyUrl;
 
     public String getNotifyUrl() {
         return notifyUrl;
     }
 
-    public void setNotifyUrl(String notifyUrl) {
+    public OrderCreateRequest setNotifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
+        return this;
     }
+
+    String merchantPosId;
+    String description;
+    String currencyCode;
+    String totalAmount;
+    String extOrderId;
+    Buyer buyer;
+    List<Product> products;
+
 
     public String getCustomerIp() {
         return customerIp;
     }
 
-    public void setCustomerIp(String customerIp) {
+    public OrderCreateRequest setCustomerIp(String customerIp) {
         this.customerIp = customerIp;
+        return this;
     }
 
     public String getMerchantPosId() {
         return merchantPosId;
     }
 
-    public void setMerchantPosId(String merchantPosId) {
+    public OrderCreateRequest setMerchantPosId(String merchantPosId) {
         this.merchantPosId = merchantPosId;
+        return this;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public OrderCreateRequest setDescription(String description) {
         this.description = description;
+        return this;
     }
 
     public String getCurrencyCode() {
         return currencyCode;
     }
 
-    public void setCurrencyCode(String currencyCode) {
+    public OrderCreateRequest setCurrencyCode(String currencyCode) {
         this.currencyCode = currencyCode;
+        return this;
     }
 
     public String getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(String totalAmount) {
+    public OrderCreateRequest setTotalAmount(String totalAmount) {
         this.totalAmount = totalAmount;
+        return this;
     }
 
     public String getExtOrderId() {
         return extOrderId;
     }
 
-    public void setExtOrderId(String extOrderId) {
+    public OrderCreateRequest setExtOrderId(String extOrderId) {
         this.extOrderId = extOrderId;
+        return this;
     }
 
-    public String getBuyer() {
+    public Buyer getBuyer() {
         return buyer;
     }
 
-    public void setBuyer(String buyer) {
+    public OrderCreateRequest setBuyer(Buyer buyer) {
         this.buyer = buyer;
+        return this;
     }
 
     public List<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public OrderCreateRequest setProducts(List<Product> products) {
         this.products = products;
+        return this;
     }
+}
 
-    String notifyUrl;
-    String customerIp;
-    String merchantPosId;
-    String description;
-    String currencyCode;
-    String totalAmount;
 
-    String buyer;
-    List<Product> products;
- }
+
+//{        "notifyUrl": "https://your.eshop.com/notify",
+//        "customerIp": "127.0.0.1",
+//        "merchantPosId": "300746",
+//        "description": "RTV market",
+//        "currencyCode": "PLN",
+//        "totalAmount": "21000",
+//        "extOrderId":"2uikc6gjd99b4lxc75ip4k",
+//        "buyer": {
+//            "email": "john.doe@example.com",
+//            "phone": "654111654",
+//            "firstName": "John",
+//            "lastName": "Doe",
+//            "language": "pl"
+//        },
+//        "products": [
+//            {
+//		"name": "Wireless Mouse for Laptop",
+//                "unitPrice": "15000",
+//                "quantity": "1"
+//            },
+//            {
+//                "name": "HDMI cable",
+//                "unitPrice": "6000",
+//                "quantity": "1"
+//            }
+//        ]
+//    }

@@ -1,6 +1,5 @@
 package pl.Lukaszmaguda.ecommerce.sales;
 
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,8 +8,9 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import pl.Lukaszmaguda.ecommerce.catalog.ProductCatalog;
-import pl.Lukaszmaguda.ecommerce.sales.offering.AcceptOfferRequest;
+import pl.Lukaszmaguda.ecommerce.sales.offer.AcceptOfferRequest;
 import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationDetail;
 
 import java.math.BigDecimal;
@@ -67,7 +67,5 @@ public class SalesHttpTest {
         assertNotNull(reservationDetailResponseEntity.getBody().getPaymentUrl());
         assertEquals(BigDecimal.valueOf(10.10), reservationDetailResponseEntity.getBody().getTotal());
     }
-
-
 
 }

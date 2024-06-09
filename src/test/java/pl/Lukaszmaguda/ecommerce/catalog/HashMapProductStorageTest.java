@@ -23,8 +23,6 @@ public class HashMapProductStorageTest {
                 .extracting(Product::getName)
                 .contains("test-it");
 
-
-
     }
 
     private ProductStorage thereIsExampleHashMapStorage() {

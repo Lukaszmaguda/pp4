@@ -1,7 +1,10 @@
 package pl.Lukaszmaguda.ecommerce.sales;
-
 import org.junit.jupiter.api.Test;
-import pl.Lukaszmaguda.ecommerce.sales.offering.Offer;
+import pl.Lukaszmaguda.ecommerce.sales.cart.InMemoryCartStorage;
+import pl.Lukaszmaguda.ecommerce.sales.offer.Offer;
+import pl.Lukaszmaguda.ecommerce.sales.offer.OfferCalculator;
+import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationRepository;
+import pl.Lukaszmaguda.ecommerce.sales.reservation.SpyPaymentGateway;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.math.BigDecimal;
@@ -10,7 +13,7 @@ public class SalesTest {
     @Test
     void itShowsOffer(){
         SalesFacade sales = thereIsSAlesFacade();
-        String customerId = thereIsExampleCustomer("Emil");
+        String customerId = thereIsExampleCustomer("Łukasz");
 
         Offer offer = sales.getCurrentOffer(customerId);
 
@@ -23,12 +26,17 @@ public class SalesTest {
     }
 
     private SalesFacade thereIsSAlesFacade() {
-        return new SalesFacade();
+        return new SalesFacade(
+                new InMemoryCartStorage(),
+                new OfferCalculator(),
+                new SpyPaymentGateway(),
+                new ReservationRepository()
+        );
     }
 
     @Test
     void itAllowsToAddProductToCart(){
-        var customerId = thereIsExampleCustomer("Emil");
+        var customerId = thereIsExampleCustomer("Łukasz");
         var productId = thereIsProduct("product", BigDecimal.valueOf(10));
 
         SalesFacade sales = thereIsSAlesFacade();
@@ -43,7 +51,7 @@ public class SalesTest {
 
     @Test
     void itAllowsToAddMultipleProductsToCart(){
-        var customerId = thereIsExampleCustomer("Emil");
+        var customerId = thereIsExampleCustomer("Łukasz");
         var productA = thereIsProduct("product a", BigDecimal.valueOf(10));
         var productB = thereIsProduct("product b", BigDecimal.valueOf(20));
 
@@ -60,7 +68,7 @@ public class SalesTest {
 
     @Test
     void itDoesNotShareCustomersCarts(){
-        var customerA = thereIsExampleCustomer("Emil");
+        var customerA = thereIsExampleCustomer("Łukasz");
         var customerB = thereIsExampleCustomer("XYZ");
         var productA = thereIsProduct("product a", BigDecimal.valueOf(10));
         var productB = thereIsProduct("product b", BigDecimal.valueOf(20));

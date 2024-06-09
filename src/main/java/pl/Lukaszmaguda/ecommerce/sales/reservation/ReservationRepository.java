@@ -1,32 +1,20 @@
 package pl.Lukaszmaguda.ecommerce.sales.reservation;
 
-public class ClientDetails {
-    private final String customerId;
-    private final String firstName;
-    private final String lastName;
-    private final String email;
+import java.util.HashMap;
+import java.util.Optional;
 
-    public ClientDetails(String customerId, String firstName, String lastName, String email) {
+public class ReservationRepository {
+    HashMap<String, Reservation> reservations;
 
-        this.customerId = customerId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+    public ReservationRepository() {
+        this.reservations = new HashMap<>();
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public Optional<Reservation> load(String reservationId) {
+        return Optional.of(reservations.get(reservationId));
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
+    public void add(Reservation reservation) {
+        reservations.put(reservation.getId(), reservation);
     }
 }

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.Lukaszmaguda.ecommerce.sales.SalesFacade;
-import pl.Lukaszmaguda.ecommerce.sales.offering.AcceptOfferRequest;
-import pl.Lukaszmaguda.ecommerce.sales.offering.Offer;
+import pl.Lukaszmaguda.ecommerce.sales.offer.AcceptOfferRequest;
+import pl.Lukaszmaguda.ecommerce.sales.offer.Offer;
 import pl.Lukaszmaguda.ecommerce.sales.reservation.ReservationDetail;
 
 @RestController

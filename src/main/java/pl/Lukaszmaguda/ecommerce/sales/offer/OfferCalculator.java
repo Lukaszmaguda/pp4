@@ -1,4 +1,4 @@
-package pl.Lukaszmaguda.ecommerce.sales.offering;
+package pl.Lukaszmaguda.ecommerce.sales.offer;
 
 import pl.Lukaszmaguda.ecommerce.sales.cart.CartLine;
 
